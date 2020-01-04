@@ -64,14 +64,14 @@ def refresh_token():
     return jsonify(ret), 200
 
 
-@auth.route('/users/', methods=['POST'])
+@app.route('/users/', methods=['POST'])
 def create_user():
     try:
         body = request.get_json()
         endpoint = '/users'
         data = {
             "email": body.get('email'),
-            "username": body.get('email'),
+            "username": body.get('username'),
             "firstName": body.get('name'),
             "lastName": body.get('sirname'),
             "credentials": [{"value": body.get('password'), "type": 'password', 'temporary': False}],
